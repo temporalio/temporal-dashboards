@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 35,
-  "iteration": 1614373407388,
+  "iteration": 1616014900683,
   "links": [],
   "panels": [
     {
@@ -67,10 +67,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum without (instance, pod) (started)) - (sum without (instance, pod) (stopped))",
+          "expr": "(sum without (instance, pod) (started)) - (sum without (instance, pod) (stopped or started*0))",
           "hide": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{cluster}}",
           "refId": "A"
         }
       ],
@@ -459,7 +459,7 @@
         {
           "expr": "sum without (instance, pod)(rate(scavenger_validation_failures[5m]))",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{cluster}} - {{validator}} - {{failure}}",
           "refId": "A"
         }
       ],
@@ -534,12 +534,12 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "BackgroundScavengers",
   "uid": "HdN3a7PMk",
-  "version": 3
+  "version": 5
 }
